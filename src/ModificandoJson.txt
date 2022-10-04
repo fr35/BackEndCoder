@@ -14,7 +14,7 @@ productContainer.save({
     .then((data)=> console.log({data}))
     .catch((error)=> console.log({error}))
 
-productContainer.getById(1)
+    productContainer.getById(1)
     .then(product => console.log({product}))
     .catch(error => console.log({error}))
 

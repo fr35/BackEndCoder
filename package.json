@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "start": "node src/desafio.js",
+    "dev": "nodemon src/desafio.js",
     "dev-no-json": "nodemon src/index.js --ignore /*.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +21,8 @@
   },
   "homepage": "https://github.com/fr35/BackEndCoder#readme",
   "dependencies": {
+    "express": "^4.18.1",
+    "moment": "^2.29.4",
     "nodemon": "^2.0.20"
   }
 }

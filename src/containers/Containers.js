@@ -39,6 +39,16 @@ class Container {
             console.log(error)
         }
     }
+    async getRandomProduct() {
+        try {
+            const elements = await this.getAll()
+            const randomProduct = elements[Math.floor(Math.random() * elements.length)]
+            if (!randomProduct) return null
+            return randomProduct
+        } catch (error) {
+            console.log(error)
+        }
+    }
     async deleteById(id) {
         try {
             const elements = await this.getAll()

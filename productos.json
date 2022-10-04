@@ -1,0 +1,18 @@
+[{
+    "tittle": "Johnnie Walker Red Label",
+    "price": 5000,
+    "thumbnail": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/151/809/products/red-label-1-litro1-9ac7a914d4540e853415871579831540-640-0.jpg",
+    "id": 1
+},
+{
+    "tittle": "Johnnie Walker Black Label",
+    "price": 10000,
+    "thumbnail": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/151/809/products/red-label-1-litro1-9ac7a914d4540e853415871579831540-640-0.jpg",
+    "id": 2
+},
+{
+    "tittle": "Johnnie Walker Blue Label",
+    "price": 20000,
+    "thumbnail": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/151/809/products/red-label-1-litro1-9ac7a914d4540e853415871579831540-640-0.jpg",
+    "id": 3
+}]
