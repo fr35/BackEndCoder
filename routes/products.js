@@ -11,24 +11,24 @@ router.get("/list", async(req,res)=>{
   })
 })
 
-router.get("/update/:id",async (req,res)=>{
+router.get("/edit/:id",async (req,res)=>{
   const { id } = req.params
   const products =  await productsFunction.getById(id)
   const formInfo = {
     botonName:"Actualizar",
     metodo:"PUT",
-    url:"/products/update/"+id
+    url:"/products/edit/"+id
   }
-  return res.render("products/change", {products , ...formInfo})
+  return res.render("/products/formProduct.hbs", {products , ...formInfo})
 })
 
-router.get("/add", (req, res) => {
+router.get("/create", (req, res) => {
   const formInfo={
     botonName:"Crear",
     metodo:"POST",
-    url:"/products/add"
+    url:"/products/create"
   }
-  res.render("products/change",formInfo)
+  res.render("/products/formProduct",formInfo)
 })
 
 
@@ -41,22 +41,21 @@ router.get("/delete/:id", async(req,res)=>{
   catch(error){
     res.redirect("/error")
   }
-
 })
 
-router.post("/add", async (req,res)=>{
+router.post("/create", async (req,res)=>{
   try {
-    const { title, price, thumbnail } = req.body
+    const {title,price,thumbnail} = req.body
     await productsFunction.create({title,price,thumbnail})
     res.redirect("/products/list")
   } catch (error) {
     res.redirect("/error")
   }
 });
-router.put("/update/:id",async (req,res)=>{
+router.post("/edit/:id",async (req,res)=>{
   try {
-    const { id } = req.params
-    const { title,price,thumbnail} = req.body
+    const {id} = req.params
+    const {title,price,thumbnail} = req.body
     await productsFunction.modify(id,{title,price,thumbnail})
     res.redirect("/products/list")
   } catch (error) {

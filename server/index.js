@@ -28,9 +28,9 @@ class CRUD {
         }
     }
 
-    async update(id,elementMod) {
+    async modify(id,elementMod) {
         try {
-            elementModify["id"]=id
+            elementMod["id"]=id
             const elements = await this.getAll();
             const element = elements.find(el => el.id == id )
             if(!element) {

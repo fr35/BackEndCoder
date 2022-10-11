@@ -1,12 +1,4 @@
 <div class="p-5">
-    <h1 class="">Products</h1>
-    <div class="row">
-    {{#if products.length}}
-    {{#each products}}
-        <div class="col-md-3">{{> ProductCard }}</div>
-    {{/each}}
-    {{else}}
-    <p class="text-black display-3 text-center my-5">No tenemos productos</p>
-    {{/if}}
-</div>
+    <button><a href="/products/list">Ver Productos</a></button>
+    <button><a href="/products/create">Agregar Producto</a></button>
 </div>
