@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/desafio.js",
-    "dev": "nodemon src/desafio.js",
-    "dev-no-json": "nodemon src/index.js --ignore /*.json",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +19,8 @@
   },
   "homepage": "https://github.com/fr35/BackEndCoder#readme",
   "dependencies": {
-    "express": "^4.18.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
     "moment": "^2.29.4",
     "nodemon": "^2.0.20"
   }
