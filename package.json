@@ -21,9 +21,11 @@
   },
   "homepage": "https://github.com/fr35/BackEndCoder#readme",
   "dependencies": {
+    "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "moment": "^2.29.4",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "pug": "^3.0.2"
   }
 }
