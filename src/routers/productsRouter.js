@@ -1,5 +1,5 @@
 import { Router } from "express"
-import ProductApi from "../api/index.js"
+import ProductApi from "../Dao/index.js"
 
 const productsRouter = Router()
 

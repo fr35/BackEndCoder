@@ -1,0 +1,26 @@
+[
+   {
+      "email": "facundorodriguezgranieri@gmail.com",
+      "text": "Hola mundo",
+      "timestamp": "25/10/2022 1:56:27",
+      "id": 1
+   },
+   {
+      "email": "chat@chat",
+      "text": "Hola soy un chat",
+      "timestamp": "25/10/2022 1:56:48",
+      "id": 2
+   },
+   {
+      "email": "chat@chat",
+      "text": "\"chat\"",
+      "timestamp": "25/10/2022 1:56:59",
+      "id": 3
+   },
+   {
+      "email": "test@test",
+      "text": "test",
+      "timestamp": "25/10/2022 8:47:43",
+      "id": 4
+   }
+]

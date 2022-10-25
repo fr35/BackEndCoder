@@ -1,0 +1,38 @@
+<div>
+    <h3 class="title">Chat</h3>
+    <table class="product-list">
+        <tr>
+            <th>Email</th>
+            <th>Time</th>
+            <th>Message</th>
+        </tr>
+        {{#if messages.length}}
+        {{#each messages}}
+        <tr>
+            <td>{{this.email}}</td>
+            <td>{{this.timestamp}}</td>
+            <td>{{this.text}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    {{else}}
+    <div>
+        <h4>There are no messages on chat</h4>
+    </div>
+    {{/if}}
+</div>
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid;
+    }
+    .title {
+        text-align: center;
+    }
+    .product-list {
+        width: 100%;
+    }
+</style>
+

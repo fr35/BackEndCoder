@@ -1,26 +1,48 @@
 import express from "express"
-import productsApiRouter from "./routers/productsApiRouter.js"
 import { create } from 'express-handlebars'
-import productsRouter from "./routers/productsRouter.js"
-import indexRouter from "./routers/index.js"
+import { Server as HttpServer } from "http"
+import { Server as IOServer } from "socket.io"
+import { MessagesDao, ProductsDao } from "./Dao/index.js"
+import { DATE_UTILS } from "./utils/index.js"
 
-
-const PORT = 8080
+const PORT = 8080 
 const app = express()
+const httpServer = new HttpServer(app)
+const io = new IOServer(httpServer)
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-const hbs = create({extname: ".hbs",})
-app.engine('.hbs', hbs.engine)
-//app.set('view engine', 'hbs')
-app.set('view engine', 'ejs')
-//app.set('view engine', 'pug')
-app.set('views', './views')
 app.use(express.static('public'))
 
-app.use("/", indexRouter)
-app.use('/api/products', productsApiRouter)
-app.use('/products', productsRouter)
+const hbs = create({extname: ".hbs", defaultLayout: "main.hbs"})
+app.engine('.hbs', hbs.engine)
+app.set('view engine', 'hbs')
+app.set('views', './views')
 
-app.listen(PORT, () =>
-    console.log("Running on port " + PORT)
-)
+io.on('connection', async (socket) => {
+    console.log(`nuevo cliente ${socket.id}`)
+    //socket products
+    socket.emit('allProducts', await ProductsDao.getAll())
+    socket.on('addProduct', async (data) => {
+        const products = await ProductsDao.save(data)
+        io.sockets.emit('allProducts', await ProductsDao.getAll())
+    })
+    //socket messages
+    socket.emit('messages', await MessagesDao.getAll())
+    socket.on('newMessage', async ({email, text}) => {
+        const message = {email, text, timestamp: DATE_UTILS.getTimestamp()}
+        await MessagesDao.save(message)
+        io.sockets.emit('messages', await MessagesDao.getAll())
+    })
+})
+
+//app.use("/", indexRouter)
+//app.use('/api/products', productsApiRouter)
+//app.use('/products', productsRouter)
+
+const server = httpServer.listen(PORT, () => {
+    console.log(`Servidor escuchando en puerto ${PORT}`)
+})
+server.on("error", (error) => {
+    console.error(`Error en el servidor ${error}`)
+})

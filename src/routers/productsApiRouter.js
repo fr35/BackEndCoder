@@ -1,8 +1,8 @@
 import { Router } from "express"
-import ProductApi from "../api/index.js"
+import ProductApi from "../Dao/index.js"
 
 
-const productsApiRouter = Router();
+const productsApiRouter = Router()
 productsApiRouter.get("/", async (req, res) => {
     const products = await ProductApi.getAll()
     res.send({success: true, data: products})

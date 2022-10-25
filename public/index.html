@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Websockets</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</head>
+<body>
+    <div>
+        <h3>Agregar producto</h3>
+        <form id="formProduct">
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="number" id="price" placeholder="Price" required>
+            <input type="text" id="thumbnail" placeholder="Image url" required>
+            <input id="addProduct" type="submit" value="Add Product">
+        </form>
+    </div>
+
+    <div id="allProducts"></div>
+
+    
+    <div id="messagesContainer" class="messagesContainer"></div>
+    <form id="formMessage"> 
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="text" placeholder="Message">
+        <input type="submit" id="addMessage" value="Send Message">
+    </form>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

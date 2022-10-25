@@ -1,11 +1,10 @@
 <div>
-    <h1 class="title">Lista de productos</h1>
-
+    <h3 class="title">Lista de productos</h3>
     <table class="product-list">
         <tr>
-            <th>Título</th>
-            <th>Precio</th>
-            <th>Miniatura</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Thumbnail</th>
         </tr>
         {{#if products.length}}
         {{#each products}}
@@ -15,11 +14,12 @@
             <td><img height="72px" width="72px" src={{this.thumbnail}} /></td>
         </tr>
         {{/each}}
-        {{/if}}
     </table>
-
-    <a href="/products/new"><button>Agregar producto</button></a>
-
+    {{else}}
+    <div>
+        <h4>There are no products</h4>
+    </div>
+    {{/if}}
 </div>
 
 <style>
