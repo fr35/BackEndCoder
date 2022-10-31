@@ -1,10 +1,4 @@
-import { Router } from "express"
-import ProductApi from "../Dao/index.js"
+export {productsRouter} from "./Products/productsRouter.js"
+export {cartRouter} from "./Cart/CartRouter.js"
 
 
-const indexRouter = Router();
-indexRouter.get("/", (req, res) => {
-    res.render('index')
-})
-
-export default indexRouter
