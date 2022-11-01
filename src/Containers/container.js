@@ -71,7 +71,7 @@ class Container {
             const foundElement = elements[foundElementIndex]
             for (const key in newData) {
                 if (foundElement.hasOwnProperty(key)) {
-                foundElement[key] = newData[key];
+                foundElement[key] = newData[key]
             }}
             await fs.promises.writeFile(
                 this.filePath,

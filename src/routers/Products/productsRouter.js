@@ -1,18 +1,28 @@
 import { Router } from "express"
-import {ProductsDao} from "../../Dao/index.js"
+import {CartDao, ProductsDao} from "../../Dao/index.js"
 import { verifyRole } from "../../middlewares/verifyRole.js"
-import { DATE_UTILS, JOI_VALIDATOR} from "../../utils/index.js"
+import {DATE_UTILS, JOI_VALIDATOR, ERRORS_UTILS} from "../../utils/index.js"
 
 const productsRouter = Router()
 
 productsRouter.get('/', async (req,res) => {
-    const products = await ProductsDao.getAll()
-    res.send(products)
+    try {
+        const products = await ProductsDao.getAll()
+        if(!products) {return res.send({error: ERRORS_UTILS.MESSAGES.NO_AllPRODUCT})}
+        res.send(products)
+    } catch (error) {
+        console.log(error)
+    }
 })
 productsRouter.get('/:id', async (req,res) => {
-    const {id} = req.params
-    const products = await ProductsDao.getById(id)
-    res.send(products)
+    try {
+        const {id} = req.params
+        const products = await ProductsDao.getById(id)
+        if(!products) {return res.send({error: ERRORS_UTILS.MESSAGES.NO_PRODUCT})}
+        res.send(products)
+    } catch (error) {
+        console.log(error)
+    }
 })
 productsRouter.post('/new', verifyRole, async (req,res) => {
     try {
@@ -21,16 +31,26 @@ productsRouter.post('/new', verifyRole, async (req,res) => {
     const newProduct = await ProductsDao.save({product})
     res.send(newProduct)
     } catch (error){
-        console.log(error);
+        res.send({error: ERRORS_UTILS.MESSAGES.NO_CREATEPRODUCT})
     }
 })
-productsRouter.delete("/:id", async (req,res) => {
+productsRouter.put('/:id', verifyRole, async (req,res) => {
     try {
         const {id} = req.params
-    await ProductsDao.deleteById(id)
+        const {title, description, code, price, stock, thumbnail} = req.body
+        const updatedProduct = await ProductsDao.updateById(id, {title, description, code, price, stock, thumbnail})
+        res.send(updatedProduct)
+    } catch (error){
+        res.send({error: ERRORS_UTILS.MESSAGES.NO_UPDATEPRODUCT})
+    }
+})
+productsRouter.delete("/:id",verifyRole, async (req,res) => {
+    try {
+        const {id} = req.params
+        await ProductsDao.deleteById(id)
     res.send({succes: true})
     } catch (error) {
-        console.log(error)
+        res.send({error: ERRORS_UTILS.MESSAGES.NO_DELETEPRODUCT})
     }
 })
 
