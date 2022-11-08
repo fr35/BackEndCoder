@@ -4,7 +4,7 @@ const options = {
 		filename:'./db.sqlite'
 	}
 }
-const baseDeDatos2 = require('knex')(options)
+const messagesDataBase = require('knex')(options)
 module.exports = {
-	baseDeDatos2
+	messagesDataBase
 }

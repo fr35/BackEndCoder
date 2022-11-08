@@ -7,8 +7,8 @@ const options = {
 		database: 'backendCoder'
 	}
 }
-const baseDeDatos = require('knex')(options)
+const productDataBase = require('knex')(options)
 
 module.exports = {
-	baseDeDatos
+	productDataBase
 }
