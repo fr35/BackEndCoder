@@ -1,0 +1,463 @@
+// Iniciar mongo y crear la base de datos
+mongosh
+show dbs
+use ecommerce
+// Crear la coleccion productos
+db.createCollection("productos")
+resultado: { ok: 1 }
+
+// Crear la coleccion mensajes
+db.createCollection("mensajes")
+resultado: { ok: 1 }
+
+// Insertar 10 productos 
+db.productos.insertMany([
+   {"title": "producto 1", "description": "product1", "code": "pr1", "price": 150,
+   "stock": 10}, 
+   {"title": "producto 2", "description": "product2", "code": "pr2", "price": 550,
+   "stock": 8},
+   {"title": "producto 3", "description": "product3", "code": "pr3", "price": 1340,
+   "stock": 25}, 
+   {"title": "producto 4", "description": "product4", "code": "pr4", "price": 4800,
+   "stock": 40},
+   {"title": "producto 5", "description": "product5", "code": "pr5", "price": 75,
+   "stock": 55}, 
+   {"title": "producto 6", "description": "product6", "code": "pr6", "price": 3400,
+   "stock": 120},
+   {"title": "producto 7", "description": "product7", "code": "pr7", "price": 2200,
+   "stock": 2}, 
+   {"title": "producto 8", "description": "product8", "code": "pr8", "price": 1050,
+   "stock": 80},
+   {"title": "producto 9", "description": "product9", "code": "pr9", "price": 3950,
+   "stock": 75}, 
+   {"title": "producto 10", "description": "product10", "code": "pr10", "price": 4050,
+   "stock": 18}
+])
+resultado: {
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6372cfb453f716814d968f6b"),
+    '1': ObjectId("6372cfb453f716814d968f6c"),
+    '2': ObjectId("6372cfb453f716814d968f6d"),
+    '3': ObjectId("6372cfb453f716814d968f6e"),
+    '4': ObjectId("6372cfb453f716814d968f6f"),
+    '5': ObjectId("6372cfb453f716814d968f70"),
+    '6': ObjectId("6372cfb453f716814d968f71"),
+    '7': ObjectId("6372cfb453f716814d968f72"),
+    '8': ObjectId("6372cfb453f716814d968f73"),
+    '9': ObjectId("6372cfb453f716814d968f74")
+  }
+}
+
+//Insertar 10 mensajes
+db.mensajes.insertMany([
+   {"email": "email1@gmail.com", "text": "text1"},
+   {"email": "email2@gmail.com", "text": "text2"},
+   {"email": "email3@gmail.com", "text": "text3"},
+   {"email": "email4@gmail.com", "text": "text4"},
+   {"email": "email5@gmail.com", "text": "text5"},
+   {"email": "email6@gmail.com", "text": "text6"},
+   {"email": "email7@gmail.com", "text": "text7"},
+   {"email": "email8@gmail.com", "text": "text8"},
+   {"email": "email9@gmail.com", "text": "text9"},
+   {"email": "email10@gmail.com", "text": "text10"},
+])
+resultado: {
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6372cfcd53f716814d968f75"),
+    '1': ObjectId("6372cfcd53f716814d968f76"),
+    '2': ObjectId("6372cfcd53f716814d968f77"),
+    '3': ObjectId("6372cfcd53f716814d968f78"),
+    '4': ObjectId("6372cfcd53f716814d968f79"),
+    '5': ObjectId("6372cfcd53f716814d968f7a"),
+    '6': ObjectId("6372cfcd53f716814d968f7b"),
+    '7': ObjectId("6372cfcd53f716814d968f7c"),
+    '8': ObjectId("6372cfcd53f716814d968f7d"),
+    '9': ObjectId("6372cfcd53f716814d968f7e")
+  }
+}
+
+// Listas todos los productos
+db.productos.find()
+resultado: [
+  {
+    _id: ObjectId("6372cfb453f716814d968f6b"),
+    title: 'producto 1',
+    description: 'product1',
+    code: 'pr1',
+    price: 150,
+    stock: 10
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f6c"),
+    title: 'producto 2',
+    description: 'product2',
+    code: 'pr2',
+    price: 550,
+    stock: 8
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f6d"),
+    title: 'producto 3',
+    description: 'product3',
+    code: 'pr3',
+    price: 1340,
+    stock: 25
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f6e"),
+    title: 'producto 4',
+    description: 'product4',
+    code: 'pr4',
+    price: 4800,
+    stock: 40
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f6f"),
+    title: 'producto 5',
+    description: 'product5',
+    code: 'pr5',
+    price: 75,
+    stock: 55
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f70"),
+    title: 'producto 6',
+    description: 'product6',
+    code: 'pr6',
+    price: 3400,
+    stock: 120
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f71"),
+    title: 'producto 7',
+    description: 'product7',
+    code: 'pr7',
+    price: 2200,
+    stock: 2
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f72"),
+    title: 'producto 8',
+    description: 'product8',
+    code: 'pr8',
+    price: 1050,
+    stock: 80
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f73"),
+    title: 'producto 9',
+    description: 'product9',
+    code: 'pr9',
+    price: 3950,
+    stock: 75
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f74"),
+    title: 'producto 10',
+    description: 'product10',
+    code: 'pr10',
+    price: 4050,
+    stock: 18
+  }
+]
+
+//Listar todos los mensajes
+db.mensajes.find()
+resultado: [
+  {
+    _id: ObjectId("6372cfcd53f716814d968f75"),
+    email: 'email1@gmail.com',
+    text: 'text1'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f76"),
+    email: 'email2@gmail.com',
+    text: 'text2'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f77"),
+    email: 'email3@gmail.com',
+    text: 'text3'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f78"),
+    email: 'email4@gmail.com',
+    text: 'text4'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f79"),
+    email: 'email5@gmail.com',
+    text: 'text5'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f7a"),
+    email: 'email6@gmail.com',
+    text: 'text6'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f7b"),
+    email: 'email7@gmail.com',
+    text: 'text7'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f7c"),
+    email: 'email8@gmail.com',
+    text: 'text8'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f7d"),
+    email: 'email9@gmail.com',
+    text: 'text9'
+  },
+  {
+    _id: ObjectId("6372cfcd53f716814d968f7e"),
+    email: 'email10@gmail.com',
+    text: 'text10'
+  }
+]
+
+// Mostrar la cantidad de productos
+db.productos.count()
+resultado: DeprecationWarning: Collection.count() is deprecated. Use countDocuments or estimatedDocumentCount.
+10
+
+// Mostrar la cantidad de mensajes
+db.mensajes.countDocuments()
+resultado: 10
+
+// Agregar un producto
+db.productos.insertOne({"title": "producto 11", "description": "product11", "code": "pr11", "price": 4990,
+   "stock": 100})
+resultado: {
+  acknowledged: true,
+  insertedId: ObjectId("6372d03d53f716814d968f7f")
+}
+
+// Buscar producto por su nombre
+db.productos.find({"title": "producto 3"})
+resultado: [
+  {
+    _id: ObjectId("6372cfb453f716814d968f6d"),
+    title: 'producto 3',
+    description: 'product3',
+    code: 'pr3',
+    price: 1340,
+    stock: 25
+  }
+]
+
+// Listar los productos con precio menor a 1000 pesos
+db.productos.find({price: { $lt : 1000 } })
+resultado: [
+  {
+    _id: ObjectId("6372cfb453f716814d968f6b"),
+    title: 'producto 1',
+    description: 'product1',
+    code: 'pr1',
+    price: 150,
+    stock: 10
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f6c"),
+    title: 'producto 2',
+    description: 'product2',
+    code: 'pr2',
+    price: 550,
+    stock: 8
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f6f"),
+    title: 'producto 5',
+    description: 'product5',
+    code: 'pr5',
+    price: 75,
+    stock: 55
+  }
+]
+
+// Listar los productos con precio entre 1000 y 3000
+db.productos.find({ $and : [ {price : {$gte : 1000}}, {price : {$lte : 3000}} ]})
+resultado: [
+  {
+    _id: ObjectId("6372cfb453f716814d968f6d"),
+    title: 'producto 3',
+    description: 'product3',
+    code: 'pr3',
+    price: 1340,
+    stock: 25
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f71"),
+    title: 'producto 7',
+    description: 'product7',
+    code: 'pr7',
+    price: 2200,
+    stock: 2
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f72"),
+    title: 'producto 8',
+    description: 'product8',
+    code: 'pr8',
+    price: 1050,
+    stock: 80
+  }
+]
+
+// Listar los productos con precio mayor a 3000
+db.productos.find({price : {$gt : 3000} })
+resultado: [
+  {
+    _id: ObjectId("6372cfb453f716814d968f6e"),
+    title: 'producto 4',
+    description: 'product4',
+    code: 'pr4',
+    price: 4800,
+    stock: 40
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f70"),
+    title: 'producto 6',
+    description: 'product6',
+    code: 'pr6',
+    price: 3400,
+    stock: 120
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f73"),
+    title: 'producto 9',
+    description: 'product9',
+    code: 'pr9',
+    price: 3950,
+    stock: 75
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f74"),
+    title: 'producto 10',
+    description: 'product10',
+    code: 'pr10',
+    price: 4050,
+    stock: 18
+  },
+  {
+    _id: ObjectId("6372d03d53f716814d968f7f"),
+    title: 'producto 11',
+    description: 'product11',
+    code: 'pr11',
+    price: 4990,
+    stock: 100
+  }
+]
+
+// Tercer producto mas barato
+db.productos.find({}).sort({price:1}).limit(1).skip(2)
+resultado: [
+  {
+    _id: ObjectId("6372cfb453f716814d968f6c"),
+    title: 'producto 2',
+    description: 'product2',
+    code: 'pr2',
+    price: 550,
+    stock: 8
+  }
+]
+
+// Actualizar todos los stock a 100
+db.productos.updateMany( {stock : {$gt : 0} } , { $set:{stock : 100 } }, {multi:true})
+resultado: {
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0
+}
+// Antes lo trataba de hacer asi db.productos.update({ $set:{stock : 100 } }, {multi:true}), db.productos.updateMany({ $set:{stock : 100 } }, {multi:true}), db.productos.updateMany({ $set:{stock : 100 } }) pero me tiraba error MongoInvalidArgumentError: Update document requires atomic operators
+
+// Cambiar stock a 0 de productos con precio mayor a 4000
+db.productos.updateMany( {price : {$gte:4000 }} , { $set:{stock : 0 } }, {multi:true})
+resultado: {
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+
+// Borrar los productos con precio menor a 1000
+db.productos.deleteMany({price : {$lte : 1000} })
+resultado: { acknowledged: true, deletedCount: 3 }
+
+resultado final despues de todos los metodos
+db.productos.find()
+[
+  {
+    _id: ObjectId("6372cfb453f716814d968f6d"),
+    title: 'producto 3',
+    description: 'product3',
+    code: 'pr3',
+    price: 1340,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f6e"),
+    title: 'producto 4',
+    description: 'product4',
+    code: 'pr4',
+    price: 4800,
+    stock: 0
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f70"),
+    title: 'producto 6',
+    description: 'product6',
+    code: 'pr6',
+    price: 3400,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f71"),
+    title: 'producto 7',
+    description: 'product7',
+    code: 'pr7',
+    price: 2200,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f72"),
+    title: 'producto 8',
+    description: 'product8',
+    code: 'pr8',
+    price: 1050,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f73"),
+    title: 'producto 9',
+    description: 'product9',
+    code: 'pr9',
+    price: 3950,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6372cfb453f716814d968f74"),
+    title: 'producto 10',
+    description: 'product10',
+    code: 'pr10',
+    price: 4050,
+    stock: 0
+  },
+  {
+    _id: ObjectId("6372d03d53f716814d968f7f"),
+    title: 'producto 11',
+    description: 'product11',
+    code: 'pr11',
+    price: 4990,
+    stock: 0
+  }
+]
+
+
+
+
